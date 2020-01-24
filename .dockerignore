@@ -1,0 +1,7 @@
+.env
+Jenkinsfile
+docker-compose.yml
+docker/Dockerfile*
+database/**/*.sql
+.vscode
+README.md

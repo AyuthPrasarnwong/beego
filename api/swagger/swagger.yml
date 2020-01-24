@@ -1,0 +1,159 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /order-promo-codes/:
+    get:
+      tags:
+      - order-promo-codes
+      description: get all OrderPromoCodes
+      operationId: OrderPromoCodeController.GetAll
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OrderPromoCode'
+    post:
+      tags:
+      - order-promo-codes
+      description: create outlet
+      operationId: OrderPromoCodeController.Create
+      parameters:
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.OrderPromoCode'
+      responses:
+        "200":
+          description: '{int} models.OrderPromoCode.Id'
+        "403":
+          description: body is empty
+  /order-promo-codes/{id}:
+    get:
+      tags:
+      - order-promo-codes
+      description: find outlet by id
+      operationId: OrderPromoCodeController.Get
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OrderPromoCode'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - order-promo-codes
+      description: update the outlet
+      operationId: OrderPromoCodeController.Update
+      parameters:
+      - in: path
+        name: uid
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.OrderPromoCode'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OrderPromoCode'
+        "403":
+          description: :id is not int
+definitions:
+  models.OrderPromoCode:
+    title: OrderPromoCode
+    type: object
+    properties:
+      amount:
+        type: integer
+        format: int64
+      brand_id:
+        type: integer
+        format: int64
+      brand_name:
+        type: string
+      campaign_description:
+        type: string
+      campaign_ended_at:
+        type: string
+        format: datetime
+      campaign_id:
+        type: string
+      campaign_name:
+        type: string
+      campaign_started_at:
+        type: string
+        format: datetime
+      created_at:
+        type: string
+        format: datetime
+      customer_birthday:
+        type: string
+      customer_email:
+        type: string
+      customer_gender:
+        type: string
+      customer_id:
+        type: integer
+        format: int64
+      customer_name:
+        type: string
+      customer_phone:
+        type: string
+      discount:
+        type: integer
+        format: int64
+      final_amount:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      order_id:
+        type: integer
+        format: int64
+      order_no:
+        type: string
+      outlet_id:
+        type: integer
+        format: int64
+      outlet_name:
+        type: string
+      promo_code:
+        type: string
+      redeemed_at:
+        type: string
+        format: datetime
+      status:
+        type: string
+      terminal_id:
+        type: integer
+        format: int64
+      terminal_no:
+        type: string
+      updated_at:
+        type: string
+        format: datetime

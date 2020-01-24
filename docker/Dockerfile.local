@@ -1,0 +1,28 @@
+FROM dockerhub.eggdigital.com:5000/base-image/horeca-api-report:latest
+
+ENV GOPATH /go
+ENV PATH $PATH:$GOPATH/bin
+
+COPY docker/supervisor/golang.ini /etc/supervisor.d/golang.ini
+COPY . /go/src/api
+WORKDIR /go/src/api
+
+RUN apk add --no-cache \
+    musl-dev==1.1.22-r3 \
+    git==2.22.0-r0 \
+    go==1.12.8-r0
+
+RUN go get github.com/beego/bee
+RUN go get github.com/astaxie/beego
+RUN go get github.com/go-sql-driver/mysql
+RUN go get github.com/smartystreets/goconvey
+RUN go get github.com/dgrijalva/jwt-go
+RUN go get github.com/joho/godotenv
+RUN go get github.com/newrelic/go-agent
+RUN go get github.com/sergeylanzman/newrelic_beego
+RUN go get github.com/Sirupsen/logrus
+RUN go get gopkg.in/go-playground/validator.v9
+
+COPY docker/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
