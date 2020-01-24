@@ -18,10 +18,6 @@ To run this application on your machine, you need at least:
 * GO = 1.12.8-r0
 
 
-Application flow pattern:
----------------------
-http://git365.eggdigital.com/horeca/horeca-api-report
-
 Run the docker for development:
 ---------------------
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
@@ -34,13 +30,13 @@ Map the domain
 ------------------------------------
 Open the hosts file on your local machine `/etc/hosts`.
 ```bash
-127.0.0.1  api-report.eggsmartpos.local
+127.0.0.1  beego.local
 ```
 
 Running Application
 ------------------------------------
 Open the browser
 ```bash
-http://api-report.eggsmartpos.local:8304
+http://beego.local:8304
 ```
 
